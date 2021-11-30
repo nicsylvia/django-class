@@ -20,11 +20,10 @@ from property_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('about/', views.about, name='about'),
     path('', views.home, name='home'),
-    path('contact/', views.contact, name='contact'),
-    path('dashboard-page/', include('dashboard_app.urls'))
-    
+    path('rent/', views.rent, name='rent'),
+    path('dashboard-page/', include('dashboard_app.urls')),
+    path('dashboard/', include('property_app.urls')),   
 ]
 
 
