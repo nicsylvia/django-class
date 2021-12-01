@@ -63,7 +63,7 @@ like the parent template then you link it to every other one. -->
                   {% url 'home' as Home %}
 
                   <!-- to show the active menu: {% if request.path == Home %} class = 'active' {% endif %} -->
-<!-- {% url 'property_app:about' as About %} -->
+                   <!-- {% url 'property_app:about' as About %} -->
 
                   <li  {% if request.path == Home %} class="active"{% endif %} >
                     <a href="{% url 'home' %}">Home</a>
