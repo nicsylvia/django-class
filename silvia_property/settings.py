@@ -17,6 +17,9 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # that template there is the name of the folder i created.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+# the media is for uploaded images. once an image is uploaded a folder called media is created.
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [STATIC_DIR,]
@@ -69,6 +72,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'property_app.property_processor.get_property_types',
+                'property_app.property_processor.footer_date',
             ],
         },
     },
@@ -86,6 +91,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+
 
 
 # Password validation

@@ -8,18 +8,17 @@ from property_app.models import *
 class LocationAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('location_name',)}
 
-
-@admin.register(OfferType)
-class OfferTypeAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('offer_type_name',)}
-
 @admin.register(PropertyType)
 class PropertyTypeAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('property_type_name',)}
 
-@admin.register(property)
+@admin.register(Property)
 class propertyAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('property_name',)}
 
 admin.site.register(ContactAgent)
 # the contact agent will be like this because it doesn't have slug.
+
+@admin.register(Team)
+class TeamAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('team_name',)}

@@ -7,4 +7,8 @@ urlpatterns = [
     path('add-location/', views.add_location, name ='add_location'),
     path('', views.dashboard, name='dashboard'),
     path('about/', views.about, name='about'),
+    path('about-detail/<int:abt>', views.about_detail, name='about_detail'),
+    path('property-detail/<slug:silver_slug>', views.property_detail, name='property_detail'),
+    path('property-type/<slug:slug>', views.properties_from_property_type, name='property_type_url'),
+    # property_type_url this must be the same with the href on the template.
 ]
