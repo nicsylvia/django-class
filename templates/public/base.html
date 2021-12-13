@@ -93,13 +93,22 @@ like the parent template then you link it to every other one. -->
               
                     </ul>
                   </li>
+
+                  {% if request.user.is_authenticated %}
+                  <li><a href="#">{{ request.user.username }}</a></li>
+                  {% else %}
                   <li><a href="agent.html">Agent</a></li>
                   <li><a href="request.html">Request</a></li>
+                  {% endif %}
                   <li class="has-children">
                     <a href="#">Login</a>
                     <ul class="dropdown arrow-top">
-                      <li><a href="login.html">Login</a></li>
+                      {% if request.user.is_authenticated %}
+                      <li><a href="{% url 'property_app:logout_view' %}">Logout</a></li>
+                      {% else %}
+                      <li><a href="{% url 'property_app:site_login_view' %}">Login</a></li>
                       <li><a href="register.html">Register</a></li>
+                      {% endif %}
                     </ul>
                   </li>
                 </ul>

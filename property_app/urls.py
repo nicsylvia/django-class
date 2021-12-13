@@ -11,4 +11,6 @@ urlpatterns = [
     path('property-detail/<slug:silver_slug>', views.property_detail, name='property_detail'),
     path('property-type/<slug:slug>', views.properties_from_property_type, name='property_type_url'),
     # property_type_url this must be the same with the href on the template.
+    path('login-page/', views.login_view, name='site_login_view'),
+    path('logout-page/', views.logout_view, name='logout_view'),
 ]

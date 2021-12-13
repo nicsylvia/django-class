@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from property_app.models import *
 from django.contrib import messages
+
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -46,6 +49,26 @@ def rent(request):
 def add_location(request):
      return render(request, 'public/add-location.html')
 
+@login_required(login_url='/frontend-pages/login-page/')
 def dashboard(request):
      return render(request, 'public/dashboard.html')
+
+def login_view(request):
+     if request.method == 'POST':
+          username = request.POST.get('username')
+          password = request.POST.get('password')
+          user = authenticate(request, username=username, password=password)
+          if user is not None:
+               login(request, user)
+               return redirect('property_app:dashboard')
+          else:
+               return messages.error(request, 'Username and password do not match')
+     return render(request, 'public/login.html')
+
+def logout_view(request):
+     logout(request)
+     return redirect('property_app:site_login_view')
+
+
+
 
